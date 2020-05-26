@@ -53,6 +53,7 @@ button {
   .App {
     margin: 0;
     height: 90vh;
+    width: 100vw;
   }
 }
 @keyframes fadeIn {
