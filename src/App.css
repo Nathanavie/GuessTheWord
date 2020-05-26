@@ -63,6 +63,10 @@ button {
   header {
     border-radius: 0;
   }
+  .randomWords {
+    width: 100vw;
+    margin-left: -2em;
+  }
 }
 @keyframes fadeIn {
   0% {
