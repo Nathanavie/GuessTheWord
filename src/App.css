@@ -52,7 +52,7 @@ button {
 @media (max-width: 768px) {
   .App {
     margin: 0;
-    height: 97vh;
+    height: 90vh;
   }
 }
 @keyframes fadeIn {
