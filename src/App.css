@@ -43,3 +43,16 @@ button {
   color: #fff;
   background: #9a2b2b;
 }
+
+.randomWords, .definitions {
+  animation: fadeIn 0.7s .2s forwards;
+  opacity: 0%;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
