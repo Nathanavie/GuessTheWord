@@ -45,6 +45,8 @@ button {
 }
 
 .randomWords, .definitions {
+  animation: fadeIn 0.7s 0.7s forwards;
+  opacity: 0%;
 }
 
 @media (max-width: 768px) {
