@@ -5,6 +5,8 @@ import Definition from './Definition';
 import GameOver from './GameOver';
 import Header from './Header';
 import Score from './Score';
+import Lives from './Lives';
+import EndOfGame from './EndOfGame';
 
 class Main extends React.Component {
   constructor(props){
@@ -15,6 +17,7 @@ class Main extends React.Component {
       definition: [],
       gameState: '',
       score: 0,
+      lives: 5,
     }
 
   }
@@ -51,8 +54,12 @@ fetchAPI = () => {
     })
   }
 
-  tryAgain = () => {
-    window.location.reload();
+  restartGame = () => {
+    this.setState({
+      gameState: '',
+      score: 0,
+      lives: 5,
+    })
   }
 
   componentDidMount() {
@@ -84,11 +91,15 @@ fetchAPI = () => {
       this.setState({
         score: this.state.score + 1,
       })
+    } else {
+      this.setState({
+        lives: this.state.lives - 1,
+      })
     }
   }
 
   render() {
-    const { correctWord, randomThreeWords, definition, gameState, score } = this.state;
+    const { correctWord, randomThreeWords, definition, gameState, score, lives } = this.state;
 
     if (gameState !== '') {
       return (
@@ -99,12 +110,22 @@ fetchAPI = () => {
           </div>
         </>
       )
+    } else if(lives === 0) {
+      return (
+        <>
+          <Header wording="Game Over" />
+          <div className="container">
+            <EndOfGame finalScore={score} restartGame={this.restartGame}/>
+          </div>
+        </>
+      )
     } else {
       return(
         <>
           <Header wording="Match the word to the definition" />
           <div className="container">
             <Score score={score} />
+            <Lives lives={lives} />
             <RandomWords checkAnswer={this.checkAnswer} words={randomThreeWords} />
             <Definition definition={definition} />
           </div>

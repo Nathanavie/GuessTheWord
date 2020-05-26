@@ -22,7 +22,7 @@ const GameOver = props => {
     <>
       <h2>That answer was {props.gameState}</h2>
       <div> {definition} is the definition of <strong>{props.correctWord}</strong></div>
-      <Button gameState={props.gameState} nextWord={props.nextWord} />
+      <Button gameState={props.gameState} nextWord={props.nextWord} wording="Next Word" origin="gameOver"/>
     </>
 
   )

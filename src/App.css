@@ -2,6 +2,10 @@ header, .container {
   padding: 2em;
 }
 
+.container {
+  min-height: 25em;
+}
+
 header {
   background: #9a2b2b;
   border-radius: 20px 20px 0 0;

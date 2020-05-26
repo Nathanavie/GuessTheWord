@@ -10,8 +10,14 @@ const Button = props => {
     }
   }
 
-  return (
-    <button onClick={() => passScore()}>Next Word</button>
-  )
+  if (props.origin === "gameOver") {
+    return (
+      <button onClick={() => passScore()}>{props.wording}</button>
+    )
+  } else if (props.origin === "EndOfGame") {
+    return (
+      <button onClick={() => props.restart()}>{props.wording}</button>
+    )
+  }
 }
 export default Button
