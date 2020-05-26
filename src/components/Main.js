@@ -72,8 +72,11 @@ fetchAPI = () => {
   }
 
   checkAnswer = e => {
-    let word = e.target.innerText;
+    let word = e.target.innerText.toLowerCase();
     let answer = this.state.correctWord;
+
+    console.log('word clicked', word)
+    console.log('answer is', answer);
 
     if (word === answer){
       this.setState({
