@@ -54,6 +54,10 @@ button {
     margin: 0;
     height: 90vh;
     width: 100vw;
+    border-radius: 0;
+  }
+  header {
+    border-radius: 0;
   }
 }
 @keyframes fadeIn {
