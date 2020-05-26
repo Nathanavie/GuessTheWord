@@ -39,6 +39,7 @@ header {
 button {
   width: 100%;
   margin-top: 2em;
+  background: transparent;
 }
 
 .randomWords p:hover, button:hover {
