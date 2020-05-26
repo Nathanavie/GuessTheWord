@@ -85,6 +85,9 @@ fetchAPI = () => {
   nextWord = answer => {
     this.fetchRandomWord();
     this.setState({
+      randomThreeWords: [],
+      correctWord: '',
+      definition: [],
       gameState: '',
     })
     if (answer) {
