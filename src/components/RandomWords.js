@@ -8,9 +8,9 @@ const RandomWords = props => {
   })
 
   return (
-    <>
+    <div className="randomWords">
       {randomWords}
-    </>
+    </div>
   )
 }
 export default RandomWords

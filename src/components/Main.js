@@ -3,6 +3,8 @@ import {getData} from '../Utils/Utils';
 import RandomWords from './RandomWords';
 import Definition from './Definition';
 import GameOver from './GameOver';
+import Header from './Header';
+import Score from './Score';
 
 class Main extends React.Component {
   constructor(props){
@@ -10,7 +12,7 @@ class Main extends React.Component {
     this.state = {
       randomThreeWords: [],
       correctWord: '',
-      definition: '',
+      definition: [],
       gameState: '',
       score: 0,
     }
@@ -43,6 +45,7 @@ fetchAPI = () => {
         randomThreeWords: data,
         correctWord: correctWord
       })
+      //delete this
       console.log('answer is',correctWord);
       this.fetchAPI()
     })
@@ -57,7 +60,6 @@ fetchAPI = () => {
   }
 
   checkAnswer = e => {
-    console.log(e.target.innerText)
     let word = e.target.innerText;
     let answer = this.state.correctWord;
 
@@ -65,12 +67,10 @@ fetchAPI = () => {
       this.setState({
         gameState: 'correct',
       })
-      console.log('gameState ', this.state.gameState)
     } else {
       this.setState({
         gameState: 'incorrect',
       })
-      console.log('gameState ', this.state.gameState)
     }
 
   }
@@ -92,17 +92,23 @@ fetchAPI = () => {
 
     if (gameState !== '') {
       return (
-        <div className="container">
-          <GameOver nextWord={this.nextWord} gameState={gameState} />
-        </div>
+        <>
+          <Header wording="Match the word to the definition" />
+          <div className="container">
+            <GameOver nextWord={this.nextWord} gameState={gameState} correctWord={correctWord} definition={definition} />
+          </div>
+        </>
       )
     } else {
       return(
-        <div className="container">
-          <p>Score: {score}</p>
-          <RandomWords checkAnswer={this.checkAnswer} words={randomThreeWords} />
-          <Definition definition={definition} />
-        </div>
+        <>
+          <Header wording="Match the word to the definition" />
+          <div className="container">
+            <Score score={score} />
+            <RandomWords checkAnswer={this.checkAnswer} words={randomThreeWords} />
+            <Definition definition={definition} />
+          </div>
+        </>
       )
     }
   }

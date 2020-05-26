@@ -1,21 +1,31 @@
 import React from 'react';
+import Button from './Button';
 
 const GameOver = props => {
+  let defs = props.definition;
+  let defArray = [];
 
-  if (props.gameState === 'incorrect') {
+  const definitions = defs.map((definition, index) =>{
+    let wording = definition.slice(0,1).toUpperCase() + definition.slice(1, definition.length);
+    defArray.push(wording)
+    return defArray
+  })
+  const definition = defArray.map((def, index) => {
     return (
-      <>
-        <h2>That answer was {props.gameState}</h2>
-        <button onClick={() => props.nextWord(false)}>Next Word</button>
-      </>
+      <>{def}</>
     )
-  } else if (props.gameState === 'correct') {
-    return (
-      <>
-        <h2>That answer was {props.gameState}</h2>
-        <button onClick={() => props.nextWord(true)}>Next Word</button>
-      </>
-    )
-  }
+  })
+
+
+
+  return (
+    <>
+      <h2>That answer was {props.gameState}</h2>
+      <div> {definition} is the definition of <strong>{props.correctWord}</strong></div>
+      <Button gameState={props.gameState} nextWord={props.nextWord} />
+    </>
+
+  )
+
 }
 export default GameOver
