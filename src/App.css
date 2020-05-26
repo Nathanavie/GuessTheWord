@@ -46,7 +46,7 @@ button {
 
 .randomWords, .definitions {
   animation: fadeIn 0.7s 0.7s forwards;
-  opacity: 0%;
+  opacity: 0;
 }
 
 @media (max-width: 768px) {
@@ -58,9 +58,9 @@ button {
 }
 @keyframes fadeIn {
   0% {
-    opacity: 0%;
+    opacity: 0;
   }
   100% {
-    opacity: 100%;
+    opacity: 1;
   }
 }
