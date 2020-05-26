@@ -7,6 +7,7 @@ import Header from './Header';
 import Score from './Score';
 import Lives from './Lives';
 import EndOfGame from './EndOfGame';
+import StartPage from './StartPage';
 
 class Main extends React.Component {
   constructor(props){
@@ -18,6 +19,8 @@ class Main extends React.Component {
       gameState: '',
       score: 0,
       lives: 5,
+      gameStarted: false,
+      difficulty: '0',
     }
 
   }
@@ -40,8 +43,14 @@ fetchAPI = () => {
   })
   }
 
-  fetchRandomWord = () => {
-    getData("https://random-word-api.herokuapp.com/word?number=3").then(data => {
+  fetchRandomWord = number => {
+    let url;
+    if (!this.state.gameStarted) {
+        url = `https://random-word-api.herokuapp.com/word?number=${number}`
+    } else {
+      url = `https://random-word-api.herokuapp.com/word?number=${this.state.difficulty}`
+    }
+    getData(url).then(data => {
       let arr = data
       let correctWord = arr[Math.floor(Math.random() * arr.length)]
       this.setState({
@@ -60,10 +69,6 @@ fetchAPI = () => {
       score: 0,
       lives: 5,
     })
-  }
-
-  componentDidMount() {
-    this.fetchRandomWord();
   }
 
   checkAnswer = e => {
@@ -101,10 +106,45 @@ fetchAPI = () => {
     }
   }
 
-  render() {
-    const { correctWord, randomThreeWords, definition, gameState, score, lives } = this.state;
+  setDifficulty = diff => {
+    if (diff === 'easy') {
+      console.log('easy mode');
+      this.setState({
+        difficulty: '3',
+        gameStarted: true,
+      })
+      console.log(this.state.difficulty);
+      this.fetchRandomWord(3);
+    } else if (diff === 'medium') {
+      console.log('medium mode');
+      this.setState({
+        difficulty: '6',
+        gameStarted: true,
+      })
+      this.fetchRandomWord(6);
+    } else if (diff === 'hard') {
+      console.log('hard mode');
+      this.setState({
+        difficulty: '9',
+        gameStarted: true,
+      })
+      this.fetchRandomWord(9);
+    }
+  }
 
-    if (gameState !== '') {
+  render() {
+    const { gameStarted, correctWord, randomThreeWords, definition, gameState, score, lives } = this.state;
+
+    if (!gameStarted) {
+      return (
+        <>
+          <Header wording="Match the word to the definition" />
+          <div className="container">
+            <StartPage setDifficulty={this.setDifficulty} />
+          </div>
+        </>
+      )
+    } else if (gameState !== '') {
       return (
         <>
           <Header wording="Match the word to the definition" />

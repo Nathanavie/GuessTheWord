@@ -22,8 +22,11 @@ header {
 }
 
 .randomWords {
-  display: flex;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  text-align: center;
+  grid-gap: 0.5%;
+  text-transform: capitalize;
 }
 
 .randomWords p, button{

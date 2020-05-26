@@ -18,6 +18,10 @@ const Button = props => {
     return (
       <button onClick={() => props.restart()}>{props.wording}</button>
     )
+  } else if (props.origin === "start") {
+    return (
+      <button onClick={() => props.setDifficulty(props.wording)}>{props.wording}</button>
+    )
   }
 }
 export default Button
