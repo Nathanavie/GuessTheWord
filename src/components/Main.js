@@ -29,8 +29,6 @@ fetchAPI = () => {
   getData(`https://dictionaryapi.com/api/v3/references/collegiate/json/${this.state.correctWord}?key=c0530e4a-01db-49b4-9a6f-cdf1b067626b`)
   .then((definition) => {
     if (definition[0].shortdef === undefined || definition[0].shortdef.length === 0) {
-      console.log('error caused by: ', definition[0].shortdef);
-      console.log('the word did not return a definition, re running random word fetch')
       this.fetchRandomWord()
     } else {
       this.setState({
@@ -57,8 +55,6 @@ fetchAPI = () => {
         randomThreeWords: data,
         correctWord: correctWord
       })
-      //delete this
-      console.log('answer is',correctWord);
       this.fetchAPI()
     })
   }
@@ -74,9 +70,6 @@ fetchAPI = () => {
   checkAnswer = e => {
     let word = e.target.innerText.toLowerCase();
     let answer = this.state.correctWord;
-
-    console.log('word clicked', word)
-    console.log('answer is', answer);
 
     if (word === answer){
       this.setState({
@@ -111,7 +104,6 @@ fetchAPI = () => {
 
   setDifficulty = diff => {
     if (diff === 'easy') {
-      console.log('easy mode');
       this.setState({
         difficulty: '3',
         gameStarted: true,
@@ -119,14 +111,12 @@ fetchAPI = () => {
       console.log(this.state.difficulty);
       this.fetchRandomWord(3);
     } else if (diff === 'medium') {
-      console.log('medium mode');
       this.setState({
         difficulty: '6',
         gameStarted: true,
       })
       this.fetchRandomWord(6);
     } else if (diff === 'hard') {
-      console.log('hard mode');
       this.setState({
         difficulty: '9',
         gameStarted: true,
