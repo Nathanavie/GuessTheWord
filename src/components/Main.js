@@ -103,20 +103,20 @@ fetchAPI = () => {
   }
 
   setDifficulty = diff => {
-    if (diff === 'easy') {
+    if (diff === 'Easy') {
       this.setState({
         difficulty: '3',
         gameStarted: true,
       })
       console.log(this.state.difficulty);
       this.fetchRandomWord(3);
-    } else if (diff === 'medium') {
+    } else if (diff === 'Medium') {
       this.setState({
         difficulty: '6',
         gameStarted: true,
       })
       this.fetchRandomWord(6);
-    } else if (diff === 'hard') {
+    } else if (diff === 'Hard') {
       this.setState({
         difficulty: '9',
         gameStarted: true,
