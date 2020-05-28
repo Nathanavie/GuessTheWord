@@ -19,6 +19,13 @@ const GameOver = props => {
   })
 
 
+  let wording;
+
+  if (props.lives === 0) {
+    wording = "Finish"
+  } else {
+    wording = "Next Word"
+  }
 
   return (
     <>
@@ -27,7 +34,7 @@ const GameOver = props => {
         <ol>{definition}</ol>
         <p> is the definition of <strong>{props.correctWord}</strong></p>
       </div>
-      <Button gameState={props.gameState} nextWord={props.nextWord} wording="Next Word" origin="gameOver"/>
+      <Button gameState={props.gameState} nextWord={props.nextWord} wording={wording} origin="gameOver"/>
     </>
 
   )

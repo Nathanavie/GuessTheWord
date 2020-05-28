@@ -90,11 +90,14 @@ fetchAPI = () => {
     if (word === answer){
       this.setState({
         gameState: 'correct',
+        score: this.state.score + 1,
       })
     } else {
       this.setState({
         gameState: 'incorrect',
+        lives: this.state.lives - 1,
       })
+      console.log('lives are now: ', this.state.lives);
     }
   }
 
@@ -105,10 +108,12 @@ fetchAPI = () => {
     if (word === answer){
       this.setState({
         gameState: 'correct',
+        score: this.state.score + 1,
       })
     } else {
       this.setState({
         gameState: 'incorrect',
+        lives: this.state.lives - 1,
       })
     }
   }
@@ -121,15 +126,6 @@ fetchAPI = () => {
       definition: [],
       gameState: '',
     })
-    if (answer) {
-      this.setState({
-        score: this.state.score + 1,
-      })
-    } else {
-      this.setState({
-        lives: this.state.lives - 1,
-      })
-    }
   }
 
   setDifficulty = diff => {
@@ -238,7 +234,7 @@ fetchAPI = () => {
         <>
           <Header wording="Match the word to the definition" />
           <div className="container">
-            <GameOver nextWord={this.nextWord} gameState={gameState} correctWord={correctWord} definition={definition} />
+            <GameOver lives={lives} nextWord={this.nextWord} gameState={gameState} correctWord={correctWord} definition={definition} />
           </div>
         </>
       )
