@@ -12,9 +12,9 @@ const GameOver = props => {
   })
   const definition = defArray.map((def, index) => {
     return (
-      <div key={index}>
+      <li key={index}>
         {def}
-      </div>
+      </li>
     )
   })
 
@@ -23,7 +23,10 @@ const GameOver = props => {
   return (
     <>
       <h2>That answer was {props.gameState}</h2>
-      <div> {definition} is the definition of <strong>{props.correctWord}</strong></div>
+      <div>
+        <ol>{definition}</ol>
+        <p> is the definition of <strong>{props.correctWord}</strong></p>
+      </div>
       <Button gameState={props.gameState} nextWord={props.nextWord} wording="Next Word" origin="gameOver"/>
     </>
 

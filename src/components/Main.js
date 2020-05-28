@@ -12,6 +12,7 @@ import StartPage from './StartPage';
 import LeaderboardOptions from './LeaderboardOptions';
 import Button from './Button';
 import ScoreAdded from './ScoreAdded';
+import ImpossibleMode from './ImpossibleMode';
 
 class Main extends React.Component {
   constructor(props){
@@ -62,6 +63,7 @@ fetchAPI = () => {
         randomThreeWords: data,
         correctWord: correctWord
       })
+      console.log('answer: ', this.state.correctWord);
       this.fetchAPI()
     })
   }
@@ -95,7 +97,21 @@ fetchAPI = () => {
         gameState: 'incorrect',
       })
     }
+  }
 
+  checkImpossibleAnswer = userAnswer => {
+    let word = userAnswer.toLowerCase()
+    let answer = this.state.correctWord;
+
+    if (word === answer){
+      this.setState({
+        gameState: 'correct',
+      })
+    } else {
+      this.setState({
+        gameState: 'incorrect',
+      })
+    }
   }
 
   nextWord = answer => {
@@ -158,6 +174,8 @@ fetchAPI = () => {
       leaderboardDifficulty = 'medium'
     } else if (difficulty === '9') {
       leaderboardDifficulty = 'hard'
+    } else if (difficulty === '11') {
+      leaderboardDifficulty = 'impossible'
     }
 
     let leaderboard = firebase.database().ref(`/${leaderboardDifficulty}`);
@@ -225,6 +243,18 @@ fetchAPI = () => {
           </div>
         </>
       )
+    } else if (gameStarted && difficulty === '11' && lives > 0) {
+      return (
+        <>
+          <Header wording="Match the word to the definition" />
+          <div className="container">
+            <Score score={score} />
+            <Lives lives={lives} />
+            <Definition definition={definition} />
+            <ImpossibleMode checkAnswer={this.checkImpossibleAnswer}/>
+          </div>
+        </>
+      )
     } else if (lives === 0) {
       return (
         <>
@@ -264,8 +294,8 @@ fetchAPI = () => {
           <div className="container">
             <Score score={score} />
             <Lives lives={lives} />
-            <RandomWords checkAnswer={this.checkAnswer} words={randomThreeWords} />
             <Definition definition={definition} />
+            <RandomWords checkAnswer={this.checkAnswer} words={randomThreeWords} />
           </div>
         </>
       )

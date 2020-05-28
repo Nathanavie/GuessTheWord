@@ -13,7 +13,7 @@ class LeaderboardOptions extends React.Component {
       impossible: '',
     }
   }
-  
+
   displayLeaderboard = difficulty => {
     this.setState({
       displayLeaderboard: true,
@@ -37,6 +37,7 @@ class LeaderboardOptions extends React.Component {
               <button className={this.state.easy} onClick={() => this.displayLeaderboard('easy')}>Easy</button>
               <button className={this.state.medium} onClick={() => this.displayLeaderboard('medium')}>Medium</button>
               <button className={this.state.hard} onClick={() => this.displayLeaderboard('hard')}>Hard</button>
+              <button className={this.state.impossible} onClick={() => this.displayLeaderboard('impossible')}>Impossible</button>
             </div>
             <Button origin="leadboardOptions" function={this.props.restart} wording="Back to game" />
           </>
@@ -48,6 +49,7 @@ class LeaderboardOptions extends React.Component {
             <button className={this.state.easy} onClick={() => this.displayLeaderboard('easy')}>Easy</button>
             <button className={this.state.medium} onClick={() => this.displayLeaderboard('medium')}>Medium</button>
             <button className={this.state.hard} onClick={() => this.displayLeaderboard('hard')}>Hard</button>
+            <button className={this.state.impossible} onClick={() => this.displayLeaderboard('impossible')}>Impossible</button>
           </div>
           <Leaderboard leaderboard={this.props.leaderboard} difficulty={this.state.difficulty}/>
           <Button origin="leadboardOptions" function={this.props.restart} wording="Back to game" />

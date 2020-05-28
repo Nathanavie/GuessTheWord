@@ -8,6 +8,7 @@ const StartPage = props => {
       <Button wording="Easy" origin="start" setDifficulty={props.setDifficulty}/>
       <Button wording="Medium" origin="start" setDifficulty={props.setDifficulty}/>
       <Button wording="Hard" origin="start" setDifficulty={props.setDifficulty}/>
+      <Button wording="Impossible" origin="start" setDifficulty={props.setDifficulty}/>
     </>
   )
 }
