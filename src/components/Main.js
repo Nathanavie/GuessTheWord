@@ -212,6 +212,7 @@ fetchAPI = () => {
       showLeaderboard: true,
       gameStarted: true,
       lives: 1,
+      difficulty: 'leaderboard'
     })
   }
   render() {
