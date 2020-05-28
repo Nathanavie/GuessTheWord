@@ -242,7 +242,7 @@ fetchAPI = () => {
         <>
           <Header wording="Leaderboard" />
           <div className="container">
-            <LeaderboardOptions getScores={this.getScores} leaderboard={this.state.leaderboard} restart={this.backToStart}/>
+            <LeaderboardOptions getScores={this.getScores} leaderboard={leaderboard} restart={this.backToStart}/>
           </div>
         </>
       )

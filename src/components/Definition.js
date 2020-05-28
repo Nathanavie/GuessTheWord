@@ -7,7 +7,6 @@ const Definition = props => {
   const definitions = defs.map((definition, index) =>{
     let wording = definition.slice(0,1).toUpperCase() + definition.slice(1, definition.length);
     defArray.push(wording)
-    console.log(defArray);
     return defArray
   })
   const definition = defArray.map((def, index) => {

@@ -13,13 +13,7 @@ class LeaderboardOptions extends React.Component {
       impossible: '',
     }
   }
-
-  componentDidMount() {
-    console.log('option prop', this.props);
-  }
-  componentDidUpdate() {
-    console.log('option prop updated', this.props);
-  }
+  
   displayLeaderboard = difficulty => {
     this.setState({
       displayLeaderboard: true,
@@ -30,7 +24,7 @@ class LeaderboardOptions extends React.Component {
       impossible: '',
       [difficulty]: 'activeButton',
     })
-    console.log('difficulty selected', difficulty);
+
     this.props.getScores(difficulty)
   }
 
