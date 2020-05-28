@@ -11,6 +11,7 @@ const Leaderboard = props => {
   const rows = sortedScores.map((row, index) => {
     return (
       <tr key={index}>
+        <td>{index + 1}</td>
         <td>{row.username}</td>
         <td>{row.userScore}</td>
       </tr>
@@ -22,6 +23,7 @@ const Leaderboard = props => {
       <table>
         <thead>
           <tr>
+            <th>Pos</th>
             <th>Player</th>
             <th>Score</th>
           </tr>

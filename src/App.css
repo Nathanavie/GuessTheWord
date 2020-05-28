@@ -104,6 +104,10 @@ td {
     text-align: center;
 }
 
+td:nth-child(1) {
+  width: 1em;
+}
+
 
 tr:nth-child(even) td { background: #F1F1F1; }
 
