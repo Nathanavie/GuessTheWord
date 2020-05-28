@@ -22,6 +22,14 @@ const Button = props => {
     return (
       <button onClick={() => props.setDifficulty(props.wording)}>{props.wording}</button>
     )
+  } else if (props.origin === "startToLeaderboard") {
+    return (
+      <button onClick={() => props.loadLeaderboard()}>{props.wording}</button>
+    )
+  } else {
+    return (
+      <button onClick={() => props.function()}>{props.wording}</button>
+    )
   }
 }
 export default Button

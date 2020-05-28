@@ -29,17 +29,34 @@ header {
   text-transform: capitalize;
 }
 
-.randomWords p, button{
-  padding: 10px;
+.randomWords p, button, input[type="submit"]{
+  padding: 1em;
   transition: all 0.3s ease;
   color: #9a2b2b;
   border: solid 0.2rem #9a2b2b;
 }
 
-button {
+button, input[type="submit"] {
   width: 100%;
   margin-top: 2em;
   background: transparent;
+}
+
+input[type="submit"] {
+  margin-top: 1em;
+}
+
+.activeButton {
+  color: #fff;
+  background: #9a2b2b;
+}
+
+.goToLeaderboard {
+  padding: 1em;
+}
+
+.goToLeaderboard button {
+  width: 25%;
 }
 
 .randomWords p:hover, button:hover {
@@ -53,12 +70,78 @@ button {
   opacity: 0;
 }
 
+.leaderboardButtons {
+  display: flex;
+}
+
+.leaderboardTitle {
+  text-transform: capitalize;
+}
+
+table {
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 640px;
+    border-collapse:
+    collapse; border-spacing: 0;
+    width: 100%;
+    margin-top: 1em;
+}
+
+td, th {
+    border: 0.5px solid #ccc;
+    height: 30px;
+    transition: all 0.3s;
+}
+
+th {
+    background: #DFDFDF;
+    font-weight: bold;
+}
+
+td {
+    background: #FAFAFA;
+    text-align: center;
+}
+
+
+tr:nth-child(even) td { background: #F1F1F1; }
+
+tr:nth-child(odd) td { background: #FEFEFE; }
+
+tr:nth-child(odd):hover td {
+  background: #ecebeb;
+  cursor: pointer;
+}
+
+tr:nth-child(even):hover td {
+  background: #fff;
+  cursor: pointer;
+}
+
+.addScoreContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 13em;
+}
+
+.addScoreContainer input {
+  padding: 1em;
+  text-transform: capitalize;
+}
+
+
 @media (max-width: 768px) {
   .App {
     margin: 0;
-    height: 90vh;
+    height: 100vh;
     width: 100vw;
     border-radius: 0;
+    overflow-y: hidden;
+  }
+  .container {
+    min-height: 50vh;
   }
   header {
     border-radius: 0;
@@ -66,6 +149,15 @@ button {
   .randomWords {
     width: 100vw;
     margin-left: -2em;
+  }
+  .goToLeaderboard {
+    margin: 0;
+    padding: 0 2em;
+    display: flex
+  }
+  .goToLeaderboard button {
+    margin: 0;
+    width: 100%;
   }
 }
 @keyframes fadeIn {

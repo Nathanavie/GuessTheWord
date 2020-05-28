@@ -12,7 +12,9 @@ const GameOver = props => {
   })
   const definition = defArray.map((def, index) => {
     return (
-      <>{def}</>
+      <div key={index}>
+        {def}
+      </div>
     )
   })
 
