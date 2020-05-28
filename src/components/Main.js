@@ -63,7 +63,6 @@ fetchAPI = () => {
         randomThreeWords: data,
         correctWord: correctWord
       })
-      console.log('answer: ', this.state.correctWord);
       this.fetchAPI()
     })
   }
